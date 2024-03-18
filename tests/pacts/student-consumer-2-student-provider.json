@@ -1,0 +1,68 @@
+{
+  "consumer": {
+    "name": "student-consumer-2"
+  },
+  "provider": {
+    "name": "student-provider"
+  },
+  "interactions": [
+    {
+      "description": "a request to get a student",
+      "providerState": "a student by the name of Ben",
+      "request": {
+        "method": "GET",
+        "path": "/get-student",
+        "query": "name=Ben"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+        },
+        "body": {
+          "status": 0,
+          "body": {
+            "name": "Benjamin Tan",
+            "age": 29,
+            "education": [
+              "National University of Singapore",
+              "National Junior College"
+            ]
+          }
+        },
+        "matchingRules": {
+          "$.body": {
+            "match": "type"
+          }
+        }
+      }
+    },
+    {
+      "description": "a request to get a student",
+      "providerState": "a student by the name of John",
+      "request": {
+        "method": "GET",
+        "path": "/get-student",
+        "query": "name=John"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+        },
+        "body": {
+          "status": 1,
+          "error": "John is not available"
+        },
+        "matchingRules": {
+          "$.body": {
+            "match": "type"
+          }
+        }
+      }
+    }
+  ],
+  "metadata": {
+    "pactSpecification": {
+      "version": "2.0.0"
+    }
+  }
+}

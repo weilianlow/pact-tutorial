@@ -1,0 +1,68 @@
+{
+  "consumer": {
+    "name": "student-consumer-1"
+  },
+  "provider": {
+    "name": "student-provider"
+  },
+  "interactions": [
+    {
+      "description": "a request to get a student",
+      "providerState": "a student by the name of Amy",
+      "request": {
+        "method": "GET",
+        "path": "/get-student",
+        "query": "name=Amy"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+        },
+        "body": {
+          "status": 0,
+          "body": {
+            "name": "Amy",
+            "age": 49,
+            "education": [
+              "Nanyang Technological University",
+              "Singapore Polytechnic"
+            ]
+          }
+        },
+        "matchingRules": {
+          "$.body": {
+            "match": "type"
+          }
+        }
+      }
+    },
+    {
+      "description": "a request to get a student",
+      "providerState": "a student by the name of Peter",
+      "request": {
+        "method": "GET",
+        "path": "/get-student",
+        "query": "name=Peter"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+        },
+        "body": {
+          "status": 1,
+          "error": "Peter is not available"
+        },
+        "matchingRules": {
+          "$.body": {
+            "match": "type"
+          }
+        }
+      }
+    }
+  ],
+  "metadata": {
+    "pactSpecification": {
+      "version": "2.0.0"
+    }
+  }
+}
